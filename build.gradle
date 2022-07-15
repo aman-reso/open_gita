@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'war'
+	id 'jar'
 }
 
 group = 'api.gita'
@@ -36,7 +36,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
-
+/*
 gradlePlugin {
     plugins {
         herokuGradle {
@@ -56,7 +56,7 @@ pluginBundle {
             displayName = 'Heroku Gradle'
         }
     }
-}
+}*/
  
 tasks.named('test') {
 	useJUnitPlatform()

@@ -25,6 +25,12 @@ repositories {
 	jcenter()
 }
 
+jar {
+    enabled = false
+}
+
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar build/libs/*.jar
+
 dependencies {
     implementation 'com.heroku.sdk:heroku-deploy:3.0.4'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'

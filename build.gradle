@@ -15,11 +15,18 @@ configurations {
 	}
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 dependencies {
+    implementation 'com.heroku.sdk:heroku-deploy:3.0.4'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -30,6 +37,34 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
+gradlePlugin {
+    plugins {
+        herokuGradle {
+            id = 'com.heroku.sdk.heroku-gradle'
+            implementationClass = 'com.heroku.sdk.HerokuGradlePlugin'
+        }
+    }
+}
+pluginBundle {
+    website = 'https://github.com/heroku/heroku-gradle'
+    vcsUrl = 'https://github.com/heroku/heroku-gradle.git'
+    description = 'A Gradle plugin for deploying to Heroku.'
+    tags = ['heroku', 'deployment']
+
+    plugins {
+        herokuGradle {
+            displayName = 'Heroku Gradle'
+        }
+    }
+}
+ 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+/*
+task writeVersionPropertiesFile(type: WriteProperties) {
+    outputFile = file('src/main/resources/heroku-gradle.properties')
+    property 'version', project.version
+}
+
+assemble.dependsOn writeVersionPropertiesFile*/

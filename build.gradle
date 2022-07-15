@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'api.gita'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -26,10 +26,11 @@ repositories {
 }
 
 jar {
-    enabled = false
+    baseName = 'app'
+    version = '0.0.1'
 }
 
-//web: java $JAVA_OPTS -Dserver.port=$PORT -jar build/libs/*.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app-0.0.1.jar
 
 dependencies {
     implementation 'com.heroku.sdk:heroku-deploy:3.0.4'

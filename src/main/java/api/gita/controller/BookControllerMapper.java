@@ -1,5 +1,6 @@
 package api.gita.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -11,6 +12,8 @@ import api.gita.entity.Book;
 public class BookControllerMapper {
 
 	public List<BookListResponse> buildBookListResponse(List<Book> book) {
-		return List.of(BookListResponse.of(book));
+		List<BookListResponse> bookListResponses = new ArrayList<>();
+		bookListResponses.add(BookListResponse.of(book));
+		return bookListResponses;
 	}
 }

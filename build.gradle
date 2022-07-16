@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'jar'
+	id 'war'
 }
 
 group = 'api.gita'
@@ -30,7 +30,9 @@ jar {
     version = '0.0.1'
 }
 
-//web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app-0.0.1.jar
+def JAVA_OPTS="-Dmy.param=\"One Two\" -Dspring.profiles.active=prod -Dflyway.validate-on-migrate=false -Djavax.net.ssl.trustStore=/var/myapp/truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
+def PORT=8080
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app-0.0.1.jar
 
 dependencies {
     implementation 'com.heroku.sdk:heroku-deploy:3.0.4'

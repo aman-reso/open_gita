@@ -8,31 +8,28 @@ plugins {
 group = 'api.gita'
 version = '0.0.1'
 sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
+//configurations {
+//	compileOnly {
+//		extendsFrom annotationProcessor
+//	}
+//}
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
+
 
 repositories {
 	mavenCentral()
-	jcenter()
 }
 
-jar {
-    baseName = 'app'
-    version = '0.0.1'
-}
+//jar {
+//  baseName = 'app'
+//    version = '0.0.1'
+//}
 
 //def JAVA_OPTS="-Dmy.param=\"One Two\" -Dspring.profiles.active=prod -Dflyway.validate-on-migrate=false -Djavax.net.ssl.trustStore=/var/myapp/truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
 
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app-0.0.1.jar
+//web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app-0.0.1.jar
 
 dependencies {
     implementation 'com.heroku.sdk:heroku-deploy:3.0.4'
@@ -45,35 +42,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
-/*
-gradlePlugin {
-    plugins {
-        herokuGradle {
-            id = 'com.heroku.sdk.heroku-gradle'
-            implementationClass = 'com.heroku.sdk.HerokuGradlePlugin'
-        }
-    }
-}
-pluginBundle {
-    website = 'https://github.com/heroku/heroku-gradle'
-    vcsUrl = 'https://github.com/heroku/heroku-gradle.git'
-    description = 'A Gradle plugin for deploying to Heroku.'
-    tags = ['heroku', 'deployment']
 
-    plugins {
-        herokuGradle {
-            displayName = 'Heroku Gradle'
-        }
-    }
-}*/
  
 tasks.named('test') {
 	useJUnitPlatform()
 }
-/*
-task writeVersionPropertiesFile(type: WriteProperties) {
-    outputFile = file('src/main/resources/heroku-gradle.properties')
-    property 'version', project.version
-}
-
-assemble.dependsOn writeVersionPropertiesFile*/

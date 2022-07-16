@@ -26,6 +26,13 @@ jar {
     version = '0.0.1'
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'api.gita.GitaApiApplication'
+        )
+    }
+}
 def PORT = 8080
 def JAVA_OPTS = "-Dmy.param=\"One Two\" -Dspring.profiles.active=prod -Dflyway.validate-on-migrate=false -Djavax.net.ssl.trustStore=/var/myapp/truststore.jks -Djavax.net.ssl.trustStorePassword=changeit"
 

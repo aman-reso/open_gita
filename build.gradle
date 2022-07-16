@@ -25,7 +25,6 @@ jar {
     baseName = 'app'
     version = '0.0.1'
 }
-
 jar {
     manifest {
         attributes(
